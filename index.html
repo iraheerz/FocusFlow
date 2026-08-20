@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FocusFlow | Study Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#"><span>✦</span> FocusFlow</a>
+        <nav>
+          <a class="active" href="#dashboard">⌘ <span>Dashboard</span></a>
+          <a href="#tasks">✓ <span>My tasks</span></a>
+          <a href="#insights">◔ <span>Insights</span></a>
+        </nav>
+        <div class="sidebar-card">
+          <span class="card-icon">☕</span>
+          <strong>Small steps add up.</strong>
+          <p>Keep your momentum going today.</p>
+        </div>
+      </aside>
+
+      <section class="content" id="dashboard">
+        <header>
+          <div>
+            <p class="eyebrow" id="today">TUESDAY, MAY 14</p>
+            <h1>Make today count.</h1>
+          </div>
+          <button class="primary-btn" id="openModal">+ Add task</button>
+        </header>
+
+        <section class="hero-grid">
+          <article class="focus-card">
+            <div class="focus-top"><span>YOUR NEXT FOCUS</span><span class="spark">✦</span></div>
+            <h2 id="nextTask">Finish Data Structures assignment</h2>
+            <p id="nextMeta">Data Structures · Due tomorrow</p>
+            <div class="focus-bottom"><div><b id="focusScore">94</b><small> priority score</small></div><button id="startFocus">Start focus session <span>→</span></button></div>
+          </article>
+          <article class="streak-card">
+            <span class="flame">♨</span><p>Current streak</p><h2><span id="streak">4</span> days</h2><small>You're doing brilliantly.</small>
+          </article>
+        </section>
+
+        <section class="stats-grid" id="insights">
+          <article><span>Tasks completed</span><strong id="completedCount">0</strong><small id="weeklyTasks">this week</small></article>
+          <article><span>Study hours</span><strong id="studyHours">0h</strong><small>planned this week</small></article>
+          <article><span>Completion rate</span><strong id="completionRate">0%</strong><small>keep building consistency</small></article>
+        </section>
+
+        <section class="main-grid" id="tasks">
+          <article class="tasks-panel">
+            <div class="section-heading"><div><p class="eyebrow">UP NEXT</p><h2>Tasks on your radar</h2></div><button class="text-btn" id="clearDone">Clear completed</button></div>
+            <div class="task-list" id="taskList"></div>
+            <p class="empty" id="emptyState">No tasks yet. Add one and make a start.</p>
+          </article>
+          <article class="progress-panel">
+            <div class="section-heading"><div><p class="eyebrow">THIS WEEK</p><h2>Your rhythm</h2></div></div>
+            <div class="chart" id="chart"></div>
+            <div class="legend"><span><i></i> Completed</span><span><i class="light"></i> Goal</span></div>
+            <div class="tip"><span>✦</span><p><b>Smart tip</b><br />Tackle your highest-priority task before noon.</p></div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="taskModal">
+      <form method="dialog" id="taskForm">
+        <div class="modal-head"><div><p class="eyebrow">NEW FOCUS</p><h2>Add a task</h2></div><button type="button" class="close" id="closeModal">×</button></div>
+        <label>Task name<input required id="taskName" placeholder="e.g. Revise calculus chapter 3" /></label>
+        <div class="form-row"><label>Subject<input required id="subject" placeholder="e.g. Mathematics" /></label><label>Due date<input required id="dueDate" type="date" /></label></div>
+        <div class="form-row"><label>Estimated hours<input required id="hours" type="number" min="1" max="20" value="2" /></label><label>Importance<select id="importance"><option value="3">High</option><option value="2" selected>Medium</option><option value="1">Low</option></select></label></div>
+        <button class="primary-btn submit" type="submit">Add to planner →</button>
+      </form>
+    </dialog>
+    <div class="toast" id="toast"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
